@@ -10,9 +10,12 @@ request(url, (err, res, body) => {
   }
   const json = JSON.parse(body);
   const resultsArray = json.results;
-  const charactersArray = resultsArray.characters.map(function (strUrl) {
-    return strUrl.match(`/${characterID}/$`);
+
+  const charactersArray = resultsArray.map(film => film.characters);
+
+  const allCharacter = charactersArray.flat();
+  const numOfWedge = allCharacter.filter(characterUrl => {
+    return characterUrl.includes(`/${characterID}/`);
   });
-  const numOfWedge = charactersArray.lenght;
-  console.log(numOfWedge);
+  console.log(numOfWedge.length);
 });
