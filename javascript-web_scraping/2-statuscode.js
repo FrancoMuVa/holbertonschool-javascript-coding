@@ -8,5 +8,5 @@ request.get(url, (error, response) => {
     console.error(error);
   }
 
-  console.log(response.statusCode);
+  console.log(`code: ${response.statusCode}`);
 });
